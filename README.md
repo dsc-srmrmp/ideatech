@@ -1,16 +1,60 @@
-# React + Vite
+# IdeaTech Club Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the official repository for the IdeaTech Club website. This project is a modern, responsive web application built to showcase our club's activities, events, and initiatives.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is built using the following technologies:
 
-## React Compiler
+-   **Framework:** [React](https://react.dev/) (v19)
+-   **Build Tool:** [Vite](https://vitejs.dev/) - for fast development and bundling.
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/) - for utility-first styling.
+-   **Animations:** [Framer Motion](https://www.framer.com/motion/) - for smooth UI transitions and animations.
+-   **Icons:** [Lucide React](https://lucide.dev/) - for consistent and clean iconography.
+-   **Utilities:** `clsx` and `tailwind-merge` for efficient class name management.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Installation & Local Development
 
-## Expanding the ESLint configuration
+To run this project locally, follow these steps:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/dsc-srmrmp/ideatech.git
+    cd ideatech
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+    The site will be available at `http://localhost:5173`.
+
+## 📦 Building for Production
+
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+This will generate a `dist` folder containing the optimized static files, ready for deployment.
+
+## 📂 Project Structure
+
+-   `src/`: Source code including components and assets.
+-   `public/`: Static assets.
+-   `dist/`: Production build output (generated after build).
+
+## 🤝 Contributing
+
+1.  Fork the repository.
+2.  Create a new branch (`git checkout -b feature/YourFeature`).
+3.  Commit your changes (`git commit -m 'Add some feature'`).
+4.  Push to the branch (`git push origin feature/YourFeature`).
+5.  Open a Pull Request.
