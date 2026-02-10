@@ -8,6 +8,8 @@ import Prizes from './components/Prizes';
 import Perks from './components/Perks';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import EventPosterShowcase from "./components/EventPosterShowcase";
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
       <Hero />
       <About />
       <Rounds />
+      <EventPosterShowcase />
       <Prizes />
       <Perks />
       <PastEvents />

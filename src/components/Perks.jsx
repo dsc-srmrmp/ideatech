@@ -54,16 +54,6 @@ const Perks = () => {
             bg: 'bg-blue-400/5',
             icon: <FileText className="text-blue-400" size={32} />
         },
-        {
-            type: 'PERK',
-            title: 'REFRESHMENTS',
-            subtitle: 'Fuel',
-            desc: 'Food and drinks provided.',
-            accent: 'border-orange-400',
-            text: 'text-orange-400',
-            bg: 'bg-orange-400/5',
-            icon: <Coffee className="text-orange-400" size={32} />
-        },
     ];
 
     return (
