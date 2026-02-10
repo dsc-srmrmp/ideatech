@@ -6,8 +6,10 @@ import Rounds from './components/Rounds';
 import About from './components/About';
 import Prizes from './components/Prizes';
 import Perks from './components/Perks';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import EventPosterShowcase from "./components/EventPosterShowcase";
+
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
       <Prizes />
       <Perks />
       <PastEvents />
+      <FAQ />
       <Footer />
     </div>
   );
