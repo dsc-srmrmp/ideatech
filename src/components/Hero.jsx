@@ -74,7 +74,9 @@ const Hero = () => {
                     transition={{ duration: 0.5, delay: 0.6 }}
                 >
                     <a
-                        href="#"
+                        href="https://www.texus.io/event/2526"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-background font-bold text-lg rounded-full overflow-hidden transition-all hover:bg-cyan-400 shadow-[0_0_20px_rgba(110,193,195,0.4)] hover:shadow-[0_0_30px_rgba(110,193,195,0.6)]"
                     >
                         <span className="relative z-10 flex items-center gap-2">
