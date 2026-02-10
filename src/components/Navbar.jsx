@@ -19,6 +19,7 @@ const Navbar = () => {
         { title: 'About', href: '#about' },
         { title: 'Rounds', href: '#rounds' },
         { title: 'Prizes', href: '#prizes' },
+        { title: 'FAQ', href: '#faq' },
         { title: 'Legacy', href: '#past-events' }, // Changed href to match section ID usually
         { title: 'Contact', href: '#contact' },
     ];
