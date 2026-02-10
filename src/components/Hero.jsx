@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Rocket, Sparkles, ChevronRight, Calendar, MapPin } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
+import { ShootingStars } from "@/components/ui/shooting-stars";
 
 const Hero = () => {
     return (
@@ -14,6 +15,22 @@ const Hero = () => {
                 {/* Grid Overlay */}
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
                 <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+                <ShootingStars
+                    starColor="#9E00FF"
+                    trailColor="#2EB9DF"
+                    minSpeed={15}
+                    maxSpeed={35}
+                    minDelay={1000}
+                    maxDelay={3000}
+                />
+                <ShootingStars
+                    starColor="#FF0099"
+                    trailColor="#FFB800"
+                    minSpeed={10}
+                    maxSpeed={25}
+                    minDelay={2000}
+                    maxDelay={4000}
+                />
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
