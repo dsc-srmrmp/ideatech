@@ -18,7 +18,7 @@ const PastEvents = () => {
     ];
 
     return (
-        <section id="legacy" className="py-20 bg-background relative">
+        <section id="past-events" className="py-20 bg-background relative scroll-mt-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
