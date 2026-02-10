@@ -5,10 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // User detection function for screen layout
+    useEffect(() => {
+        const checkLayout = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Initial check
+        checkLayout();
+
+        // Listener
+        window.addEventListener('resize', checkLayout);
+        return () => window.removeEventListener('resize', checkLayout);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -19,68 +34,94 @@ const Navbar = () => {
         { title: 'About', href: '#about' },
         { title: 'Rounds', href: '#rounds' },
         { title: 'Prizes', href: '#prizes' },
-        { title: 'Legacy', href: '#past-events' }, // Changed href to match section ID usually
+        { title: 'Legacy', href: '#past-events' },
         { title: 'Contact', href: '#contact' },
     ];
 
     return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md shadow-lg border-b border-white/10' : 'bg-transparent'
-                }`}
-        >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <div className="flex-shrink-0 cursor-pointer flex items-center gap-2" onClick={() => window.scrollTo(0, 0)}>
-                        <img src="/dsc.png" alt="DSC" className="h-8 w-8 object-contain" />
-                        <h1 className="text-2xl font-orbitron font-bold text-primary tracking-wider">
-                            IDEA<span className="text-white">TECH</span>
-                        </h1>
-                    </div>
+        <div className="fixed top-0 left-0 w-full z-50 flex flex-col items-center pt-4 px-4">
+            <motion.nav
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+                className={`
+                    w-full max-w-7xl rounded-2xl transition-all duration-300 relative
+                    ${scrolled || isOpen ? 'bg-[#0B1414]/80 backdrop-blur-xl border border-primary/30' : 'bg-transparent border border-transparent'}
+                    ${!scrolled && !isOpen && 'bg-white/5 backdrop-blur-sm border-white/5'} 
+                `}
+                style={{
+                    boxShadow: scrolled || isOpen ? '0 0 20px rgba(110, 193, 195, 0.2), inset 0 0 1px rgba(255, 255, 255, 0.1)' : 'none'
+                }}
+            >
+                <div className="px-4 sm:px-6 lg:px-8">
+                    <div className="flex items-center justify-between h-16 md:h-20 relative">
+                        {/* LEFT: DSC Logo */}
+                        <div className="flex-shrink-0 cursor-pointer flex items-center gap-2" onClick={() => window.scrollTo(0, 0)}>
+                            <img src="/dsc-logo.svg" alt="DSC" className="h-10 md:h-14 w-auto object-contain" />
+                        </div>
 
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-8">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.title}
-                                    href={link.href}
-                                    className="text-gray-300 hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium relative group"
+                        {/* CENTER: Navigation Links (Desktop) */}
+                        <div className="hidden md:flex flex-1 justify-center">
+                            <div className="flex items-baseline space-x-1 lg:space-x-6">
+                                {navLinks.map((link) => (
+                                    <a
+                                        key={link.title}
+                                        href={link.href}
+                                        className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2 rounded-lg text-sm font-medium relative group"
+                                    >
+                                        {link.title}
+                                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-1/2"></span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* CENTER: SRM Logo (Mobile) - Absolute Centered */}
+                        <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
+                            <img src="/srm-logo.svg" alt="SRM" className="h-10 w-auto object-contain" />
+                        </div>
+
+                        {/* RIGHT: SRM Logo (Desktop) & Menu Button (Mobile) */}
+                        <div className="flex items-center gap-4">
+                            {/* SRM Logo - Desktop */}
+                            <div className="hidden md:block">
+                                <img src="/srm-logo.svg" alt="SRM" className="h-12 w-auto object-contain" />
+                            </div>
+
+                            {/* Mobile Menu Button */}
+                            <div className="flex md:hidden">
+                                <button
+                                    onClick={() => setIsOpen(!isOpen)}
+                                    className="text-gray-400 hover:text-white focus:outline-none transition-colors"
                                 >
-                                    {link.title}
-                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                                </a>
-                            ))}
+                                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                                </button>
+                            </div>
                         </div>
                     </div>
-
-                    <div className="-mr-2 flex md:hidden">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700/50 focus:outline-none"
-                        >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
-                    </div>
                 </div>
-            </div>
+            </motion.nav>
 
+            {/* Mobile Menu - Separate Floating Dock */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="md:hidden w-full max-w-7xl mt-2 rounded-2xl overflow-hidden bg-[#0B1414]/80 backdrop-blur-xl border border-primary/30"
+                        style={{
+                            boxShadow: '0 0 25px rgba(110, 193, 195, 0.25), inset 0 0 1px rgba(255, 255, 255, 0.15)'
+                        }}
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <div className="flex flex-col px-4 py-3 gap-1">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.title}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-gray-300 hover:text-primary block px-3 py-2 rounded-md text-base font-medium"
+                                    className="flex items-center w-full px-3 py-2.5 rounded-lg text-gray-300 hover:text-primary hover:bg-white/5 transition-all font-medium"
                                 >
                                     {link.title}
                                 </a>
@@ -89,7 +130,7 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </div>
     );
 };
 

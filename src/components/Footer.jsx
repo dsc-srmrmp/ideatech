@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer id="contact" className="bg-black py-12 border-t border-white/10 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left">
+                <div className="flex flex-col md:flex-row w-full justify-between gap-12 text-center md:text-left">
 
                     {/* Brand & Socials */}
                     <div className="space-y-6">
@@ -32,18 +32,18 @@ const Footer = () => {
                     <div className="glass-card p-6 rounded-xl border border-white/10 bg-white/5">
                         <h3 className="text-xl font-bold text-white mb-6 font-orbitron">Student Coordinators</h3>
                         <div className="space-y-4">
-                            <div className="flex items-center justify-center md:justify-start gap-4 p-3 rounded-lg bg-black/20 hover:bg-black/40 transition-colors">
-                                <div className="p-2 bg-primary/10 rounded-full text-primary">
+                            <div className="flex items-center justify-start gap-4 p-3 rounded-lg bg-black/20 hover:bg-black/40 transition-colors">
+                                <div className="p-2 bg-primary/10 rounded-full text-primary flex items-center justify-center shrink-0">
                                     <Phone size={18} />
                                 </div>
                                 <div className="text-left">
-                                    <p className="text-white font-medium">Srinivasan Kannan</p>
+                                    <p className="text-white font-medium">Srivarsan K</p>
                                     <a href="https://wa.me/919474624190" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-primary transition-colors">+91 94746 24190</a>
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-center md:justify-start gap-4 p-3 rounded-lg bg-black/20 hover:bg-black/40 transition-colors">
-                                <div className="p-2 bg-cyan-600/10 rounded-full text-cyan-400">
+                            <div className="flex items-center justify-start gap-4 p-3 rounded-lg bg-black/20 hover:bg-black/40 transition-colors">
+                                <div className="p-2 bg-primary/10 rounded-full text-primary flex items-center justify-center shrink-0">
                                     <Phone size={18} />
                                 </div>
                                 <div className="text-left">
