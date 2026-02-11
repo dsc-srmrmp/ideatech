@@ -13,11 +13,18 @@ const EventPosterShowcase = () => {
         className="w-full flex justify-center px-6"
       >
         <div className="glass-card p-1 md:p-3 rounded-3xl border border-primary/30 shadow-[0_0_60px_rgba(110,193,195,0.25)]">
-          <img
-            src="/poster.png"
-            alt="Ideatech Official Poster"
-            className="rounded-2xl w-full max-w-3xl object-contain animate-float"
-          />
+          <a
+            href="https://www.texus.io/event/2526"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer block animate-float"
+          >
+            <img
+              src="/poster.png"
+              alt="Ideatech Official Poster"
+              className="rounded-2xl w-full max-w-3xl object-contain hover:scale-[1.02] transition-transform duration-300"
+            />
+          </a>
         </div>
       </motion.div>
     </section>
